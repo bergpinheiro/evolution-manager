@@ -98,6 +98,25 @@
           </div>
         </div>
         <div class="d-flex align-center gap-4 flex-wrap">
+          <v-text-field
+            class="flex-grow-1 flex-shrink-0 mb-3"
+            v-model="chatwootData.name_inbox"
+            :disabled="
+              loading ||
+              !AppStore.versionSatisfies('>=1.7.4')
+            "
+            :label="$t('chatwoot.nameInbox')"
+            :hint="
+              !AppStore.versionSatisfies('>=1.7.4')
+                ? $t('version.availableFrom', { version: '1.7.4' })
+                : $t('chatwoot.nameInboxHelp')
+            "
+            :persistent-hint="!AppStore.versionSatisfies('>=1.7.4')"
+            hide-details="auto"
+            style="min-width: 200px"
+          ></v-text-field>
+        </div>
+        <div class="d-flex align-center gap-4 flex-wrap">
           <v-checkbox
             class="flex-grow-0 flex-shrink-0"
             v-model="chatwootData.sign_msg"
@@ -129,15 +148,6 @@
             placeholder="\n"
             style="min-width: 200px"
           ></v-text-field>
-          <v-text-field
-              v-model.number="chatwootData.name_inbox"
-              :label="$t('chatwoot.nameInbox')"
-              :disabled="loading"
-              outlined
-              dense
-              hide-details="auto"
-              class="mb-3"
-            />
         </div>
 
         <div class="d-flex gap-x-4 flex-wrap">
@@ -157,23 +167,6 @@
               </template>
             </v-checkbox>
           </div>
-        
-          <div>
-            <v-checkbox
-              v-model="chatwootData.merge_brazil_contacts"
-              :disabled="loading"
-              hide-details
-              class="mb-3"
-              density="compact"
-            >
-              <template v-slot:label>
-                <span>{{ $t("chatwoot.mergeBrazilContacts") }}</span>
-                <HelpTooltip>
-                  {{ $t("chatwoot.mergeBrazilContactsHelp") }}
-                </HelpTooltip>
-              </template>
-            </v-checkbox>
-        </div>
 
           <div>
             <v-checkbox
@@ -257,6 +250,26 @@
               </template>
             </v-checkbox>
           </div>
+          <div>
+            <v-checkbox
+              v-model="chatwootData.merge_brazil_contacts"
+              :disabled="loading || !AppStore.versionSatisfies('>=1.7.5')"
+              :hint="
+                !AppStore.versionSatisfies('>=1.7.5')
+                  ? $t('version.availableFrom', { version: '1.7.5' })
+                  : undefined
+              "
+              :persistent-hint="!AppStore.versionSatisfies('>=1.7.5')"
+              hide-details="auto"
+              class="mb-3"
+              density="compact"
+            >
+              <template v-slot:label>
+                <span>{{ $t("chatwoot.mergeBrasilianContacts") }}</span>
+                <HelpTooltip>{{ $t("chatwoot.mergeBrasilianContactsHelp") }}</HelpTooltip>
+              </template>
+            </v-checkbox>
+          </div>
         </div>
       </v-form>
     </v-card-text>
@@ -298,12 +311,12 @@ const defaultObj = () => ({
   url: "",
   account_id: "",
   token: "",
+  name_inbox: "",
   sign_msg: true,
   sign_delimiter: "\n",
-  name_inbox: "",
   reopen_conversation: true,
-  merge_brazil_contacts: true,
   conversation_pending: false,
+  merge_brazil_contacts: false,
   auto_create: undefined,
   import_contacts: false,
   import_messages: false,
@@ -329,12 +342,12 @@ export default {
       url: "",
       account_id: "",
       token: "",
+      name_inbox: "",
       sign_msg: true,
       sign_delimiter: "\n",
-      name_inbox: "",
       reopen_conversation: true,
-      merge_brazil_contacts: true,
       conversation_pending: false,
+      merge_brazil_contacts: false,
       import_contacts: false,
       import_messages: false,
       days_limit_import_messages: 0,
@@ -344,12 +357,12 @@ export default {
       url: "",
       account_id: "",
       token: "",
+      name_inbox: "",
       sign_msg: true,
       sign_delimiter: "\n",
-      name_inbox: "",
       reopen_conversation: true,
-      merge_brazil_contacts: true,
       conversation_pending: false,
+      merge_brazil_contacts: false,
       import_contacts: false,
       import_messages: false,
       days_limit_import_messages: 0,
