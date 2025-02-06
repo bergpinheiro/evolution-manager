@@ -45,7 +45,7 @@
           :disabled="loading"
           :label="$t('profile.status')"
           :rules="[
-            (v) => !!v || $t('required', { field: $t('profile.status.status') }),
+            (v) => !!v || $t('required', { field: $t('profile.status') }),
             (v) =>
               v.length <= 139 || $t('maxLength', { field: $t('profile.status'), length: 139 }),
           ]"
@@ -142,7 +142,7 @@ export default {
         const { isOpen } = this;
         var data = {
           name: isOpen ? instance.profileName.replace("not loaded", "") || "" : "",
-          status: isOpen ? instance.profileStatus || "" : "",
+          status: isOpen ? instance.profileStatus?.status || "" : "",
         };
 
         this.data = Object.assign({}, data);
