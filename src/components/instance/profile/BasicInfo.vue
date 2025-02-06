@@ -43,7 +43,7 @@
           class="flex-grow-1 flex-shrink-0"
           v-model="data.status"
           :disabled="loading"
-          :label="$t('profile.status')"
+          :label="$t('profileStatus.status')"
           :rules="[
             (v) => !!v || $t('required', { field: $t('profile.status') }),
             (v) =>
