@@ -55,6 +55,8 @@
         </v-chip>
       </h2>
       <small>{{ instance.instance.profileStatus.status }}</small>
+      <small><strong>ID:</strong> {{ instance.instance.instanceId }}</small>
+      <small><strong>Perfil:</strong> {{ instance.instance.profileName }}</small>
     </div>
     <v-spacer></v-spacer>
     <div class="d-flex gap-2 flex-wrap justify-end">
