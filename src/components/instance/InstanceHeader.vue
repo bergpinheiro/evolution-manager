@@ -204,8 +204,12 @@ export default {
         this.disconnect.loading = false;
       }
     },
-    toggleReveled() {
-      this.apikeyReveled = !this.apikeyReveled;
+    toggleReveled(field) {
+  if (field === "apikey") {
+    this.apikeyReveled = !this.apikeyReveled;
+  } else if (field === "instanceId") {
+    this.instanceIdReveled = !this.instanceIdReveled;
+  }
     },
   },
   computed: {
