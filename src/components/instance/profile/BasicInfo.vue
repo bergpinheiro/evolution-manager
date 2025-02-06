@@ -43,9 +43,9 @@
           class="flex-grow-1 flex-shrink-0"
           v-model="data.status"
           :disabled="loading"
-          :label="$t('profileStatus.status')"
+          :label="$t('profile.status')"
           :rules="[
-            (v) => !!v || $t('required', { field: $t('profile.status') }),
+            (v) => !!v || $t('required', { field: $t('profile.status.status') }),
             (v) =>
               v.length <= 139 || $t('maxLength', { field: $t('profile.status'), length: 139 }),
           ]"
