@@ -56,35 +56,7 @@
       </h2>
       <small>{{ instance.instance.profileStatus.status }}</small>
       <!-- Instance ID com visual de API Key -->
-      <v-chip
-        color="primary"
-        class="mt-1"
-        size="x-small"
-        @click="copyInstanceId"
-      >
-        <v-icon start size="small">mdi-identifier</v-icon>
-        {{
-          (instance.instance?.instanceId || "").slice(
-            0,
-            instanceIdReveled ? undefined : 7
-          )
-        }}{{ instanceIdReveled ? "" : "..." }}
-        <v-btn
-          icon
-          @click.stop="toggleReveled('instanceId')"
-          density="comfortable"
-          class="ml-1"
-          variant="text"
-          size="x-small"
-        >
-          <v-icon size="small">
-            {{ instanceIdReveled ? "mdi-eye-off" : "mdi-eye" }}
-          </v-icon>
-        </v-btn>
-        <v-icon end size="small">
-          {{ instanceIdCopied ? "mdi-check" : "mdi-content-copy" }}
-        </v-icon>
-      </v-chip>
+      <small><strong>ID:</strong> {{ instance.instance.instanceId }}</small>
 
       <!-- Exibição do nome do perfil -->
       <small><strong>Perfil:</strong> {{ instance.instance.profileName }}</small>
@@ -204,12 +176,8 @@ export default {
         this.disconnect.loading = false;
       }
     },
-    toggleReveled(field) {
-  if (field === "apikey") {
-    this.apikeyReveled = !this.apikeyReveled;
-  } else if (field === "instanceId") {
-    this.instanceIdReveled = !this.instanceIdReveled;
-  }
+    toggleReveled() {
+      this.apikeyReveled = !this.apikeyReveled;
     },
   },
   computed: {
