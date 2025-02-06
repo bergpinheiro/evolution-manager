@@ -54,7 +54,7 @@
           </v-icon>
         </v-chip>
       </h2>
-      <small>{{ instance.instance.profileStatus }}</small>
+      <small>{{ instance.instance.profileStatus.status }}</small>
     </div>
     <v-spacer></v-spacer>
     <div class="d-flex gap-2 flex-wrap justify-end">
